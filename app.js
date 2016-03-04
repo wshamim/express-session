@@ -10,6 +10,9 @@ var mongoose = require('mongoose');
 var config = require('./config');
 mongoose.connect(config.database);
 
+//---- Create First Model (user)
+var User = require('./models/user');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
