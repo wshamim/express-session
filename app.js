@@ -5,6 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+//---- Connect to Database in our application
+var mongoose = require('mongoose');
+var config = require('./config');
+mongoose.connect(config.database);
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
