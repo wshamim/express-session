@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var port = process.env.PORT || 9292; 				// set the port
 
 //---- Connect to Database in our application
 var mongoose = require('mongoose');
@@ -65,4 +66,6 @@ app.use(function(err, req, res, next) {
 });
 
 
+app.listen(port);
+console.log("App listening on port " + port);
 module.exports = app;
