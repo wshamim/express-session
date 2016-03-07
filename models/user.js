@@ -7,7 +7,13 @@ var config = require('../config');
 var UserSchema = new mongoose.Schema({
 	email: String,
   hash: String,
-  salt: String
+  salt: String,
+  facebook         : {
+      id           : String,
+      token        : String,
+      email        : String,
+      name         : String
+  }
 });
 
 UserSchema.methods.setPassword = function(password){

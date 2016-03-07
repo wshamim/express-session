@@ -6,6 +6,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 9292; 				// set the port
 
+//---- Require Passport in Application
+var passport = require('passport');
+
+
 //---- Connect to Database in our application
 var mongoose = require('mongoose');
 var config = require('./config');
@@ -33,6 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+//---- Initialize Passport Strategy
+require('./passport')(passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
