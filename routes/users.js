@@ -4,8 +4,12 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
+var expjwt = require('express-jwt');
+var config = require('../config');
+var authenticate = expjwt({secret: config.secret, userProperty: 'payload'});
+
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/',authenticate, function(req, res, next) {
   //res.send('respond with a resource');
   User.find(function(err, users){
     res.json(users);
