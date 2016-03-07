@@ -17,9 +17,11 @@ mongoose.connect(config.database);
 
 //---- Create First Model (user)
 var User = require('./models/user');
+var Note = require('./models/note');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var notes = require('./routes/notes');
 
 var app = express();
 
@@ -37,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/notes', notes);
 
 //---- Initialize Passport Strategy
 require('./passport')(passport);

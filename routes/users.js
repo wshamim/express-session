@@ -16,6 +16,13 @@ router.get('/',authenticate, function(req, res, next) {
   })
 });
 
+router.get('/usersWithNotes',authenticate, function(req, res, next) {
+  //res.send('respond with a resource');
+  User.find().populate('notes').exec(function(err, users){
+    res.json(users);
+  })
+});
+
 router.get('/setup', function(req, res) {
 
 	// create a sample user
